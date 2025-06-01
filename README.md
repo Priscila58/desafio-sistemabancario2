@@ -1,8 +1,7 @@
 SISTEMA-BANCARIO-02
-import textwrap
-
 
 def menu():
+
     menu = """\n
     ================ MENU ================
     [d]\tDepositar
@@ -17,6 +16,7 @@ def menu():
 
 
 def depositar(saldo, valor, extrato, /):
+
     if valor > 0:
         saldo += valor
         extrato += f"Depósito:\tR$ {valor:.2f}\n"
@@ -28,6 +28,7 @@ def depositar(saldo, valor, extrato, /):
 
 
 def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
+
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
     excedeu_saques = numero_saques >= limite_saques
@@ -54,6 +55,7 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
 
 def exibir_extrato(saldo, /, *, extrato):
+
     print("\n================ EXTRATO ================")
     print("Não foram realizadas movimentações." if not extrato else extrato)
     print(f"\nSaldo:\t\tR$ {saldo:.2f}")
@@ -61,6 +63,7 @@ def exibir_extrato(saldo, /, *, extrato):
 
 
 def criar_usuario(usuarios):
+
     cpf = input("Informe o CPF (somente número): ")
     usuario = filtrar_usuario(cpf, usuarios)
 
@@ -78,11 +81,13 @@ def criar_usuario(usuarios):
 
 
 def filtrar_usuario(cpf, usuarios):
+
     usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
     return usuarios_filtrados[0] if usuarios_filtrados else None
 
 
 def criar_conta(agencia, numero_conta, usuarios):
+
     cpf = input("Informe o CPF do usuário: ")
     usuario = filtrar_usuario(cpf, usuarios)
 
@@ -94,6 +99,7 @@ def criar_conta(agencia, numero_conta, usuarios):
 
 
 def listar_contas(contas):
+
     for conta in contas:
         linha = f"""\
             Agência:\t{conta['agencia']}
@@ -105,6 +111,7 @@ def listar_contas(contas):
 
 
 def main():
+
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
 
